@@ -112,6 +112,7 @@
 	    this.pink.animations.add('walk', [ 0, 1 ,2,3],5, true);
 	    this.pink.play('walk');
 	    this.pink.setAll('body.velocity.x', -20);
+	    this.physics.arcade.enable(this.pink)
 
             this.physics.arcade.enable(this.pacman);
             this.pacman.body.setSize(16, 16, 0, 0);
