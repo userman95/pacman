@@ -213,14 +213,12 @@
             else if (direction === Phaser.UP)
             {
                 this.pacman.animations.stop();
-                this.pacman.angle = 270;
                 this.pacman.play('munchUp');
 
             }
             else if (direction === Phaser.DOWN)
             {
                 this.pacman.animations.stop();
-                this.pacman.angle = 90;
                 this.pacman.play('munchDown');
             }
             else if (direction === Phaser.RIGHT)
