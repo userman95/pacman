@@ -109,9 +109,9 @@
             this.pink.enableBody = true;
 	    this.map.createFromTiles(1, null, 'pink', 'stuff', this.pinks);
 	    //this.pinks.callAll('animations.add', 'animations', 'walk', [ 0, 1 ,2,3],4, true);
-	    this.pinks.animations.add('walk', [ 0, 1 ,2,3],5, true);
-	    this.pinks.play('walk');
-	    this.pinks.setAll('body.velocity.x', -20);
+	    this.pink.animations.add('walk', [ 0, 1 ,2,3],5, true);
+	    this.pink.play('walk');
+	    this.pink.setAll('body.velocity.x', -20);
 
             this.physics.arcade.enable(this.pacman);
             this.pacman.body.setSize(16, 16, 0, 0);
