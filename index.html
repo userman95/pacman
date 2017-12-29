@@ -109,7 +109,7 @@
         checkKeys: function () {
 
             if (this.cursors.left.isDown && this.current !== Phaser.LEFT)
-            {
+            {            
                 this.checkDirection(Phaser.LEFT);
             }
             else if (this.cursors.right.isDown && this.current !== Phaser.RIGHT)
@@ -205,7 +205,9 @@
 
             if (direction === Phaser.LEFT)
             {
+                this.pacman.animations.stop();
                 this.pacman.scale.x = -1;
+                this.pacman.play('munch');
             }
             else if (direction === Phaser.UP)
             {
@@ -218,7 +220,7 @@
             {
                 this.pacman.animations.stop();
                 this.pacman.angle = 90;
-                 this.pacman.play('munchDown');
+                this.pacman.play('munchDown');
             }
 
             this.current = direction;
