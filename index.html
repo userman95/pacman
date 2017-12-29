@@ -222,6 +222,12 @@
                 this.pacman.angle = 90;
                 this.pacman.play('munchDown');
             }
+            else if (direction === Phaser.RIGHT)
+            {
+                this.pacman.animations.stop();
+                this.pacman.scale.x = -1;
+                this.pacman.play('munch');
+            }
 
             this.current = direction;
 
