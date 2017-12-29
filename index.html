@@ -64,6 +64,12 @@
 
             this.load.image('dot', 'assets/dot.png');
             this.load.image('tiles', 'assets/TILES.png');
+            this.load.spritesheet('pink','assets/pink.png');
+            this.load.spritesheet('red','assets/red.png');
+            this.load.spritesheet('blue','assets/blue.png');
+            this.load.spritesheet('orange','assets/orange.png');
+            this.load.spritesheet('deadPhantom','assets/deadPhantom.png');
+            
             this.load.spritesheet('pacman', 'assets/Child1.png',16, 32);
             this.load.tilemap('map', 'assets/FINAL.json', null, Phaser.Tilemap.TILED_JSON);
 
@@ -97,6 +103,14 @@
             this.pacman.animations.add('munchRight', [12,13,14,15,16,17], 10, true);
             this.pacman.animations.add('munchUp', [6,7,8,9,10,11], 10, true);
             this.pacman.animations.add('munchDown', [0,1,2,3,4,5], 10, true);
+            // pink Phantom
+            this.pink = game.add.group();
+            pink.enableBody = true;
+			map.createFromTiles(1, null, 'pink', 'stuff', pinks);
+			pinks.callAll('animations.add', 'animations', 'walk', [ 0, 1 ,2,3],
+					4, true);
+			pinks.callAll('animations.play', 'animations', 'walk');
+			pinks.setAll('body.velocity.x', -20);
 
             this.physics.arcade.enable(this.pacman);
             this.pacman.body.setSize(16, 16, 0, 0);
@@ -247,7 +261,7 @@
         update: function () {
           
             this.physics.arcade.collide(this.pacman, this.layer);
-            this.physics.arcade.collide(this.pacman, this.stuff);
+            game.physics.arcade.overlap(this.pacman, this.pink, this.pinkOverlap);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
 
             this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
@@ -266,6 +280,23 @@
                 this.turn();
             }
 
+        },
+        pinkOverlap: function(pacman,pink){
+            if (this.pacman.body.touching.down||this.pacman.body.touching.up||this.pacman.body.touching.right||this.pacman.body.touching.left) {
+				this.pink.animations.stop();
+				this.pink.frame = 2;
+				this.pink.body.enable = false;
+				this.pacman.body.velocity.y = -80;				
+				//this.pink.kill();		
+                game.paused = true;
+			} /*else {
+				player.frame = 6;
+				player.body.enable = false;
+				player.animations.stop();
+				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+					game.paused = true;
+				});
+			}*/
         }
 
     };
