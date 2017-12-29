@@ -105,7 +105,7 @@
             this.pacman.animations.add('munchDown', [0,1,2,3,4,5], 10, true);
             // pink Phantom
             this.pink = game.add.group();
-            pink.enableBody = true;
+            this.pink.enableBody = true;
 			map.createFromTiles(1, null, 'pink', 'stuff', pinks);
 			pinks.callAll('animations.add', 'animations', 'walk', [ 0, 1 ,2,3],
 					4, true);
