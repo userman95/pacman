@@ -107,11 +107,11 @@
             // pink Phantom
             this.pink = game.add.group();
             this.pink.enableBody = true;
-			this.map.createFromTiles(1, null, 'pink', 'stuff', this.pinks);
-			this.pinks.callAll('animations.add', 'animations', 'walk', [ 0, 1 ,2,3],
-					4, true);
-			this.pinks.callAll('animations.play', 'animations', 'walk');
-			this.pinks.setAll('body.velocity.x', -20);
+	    this.map.createFromTiles(1, null, 'pink', 'stuff', this.pinks);
+	    //this.pinks.callAll('animations.add', 'animations', 'walk', [ 0, 1 ,2,3],4, true);
+	    this.pinks.animations.add('walk', [ 0, 1 ,2,3],5, true);
+	    this.pinks.callAll('animations.play', 'animations', 'walk');
+	    this.pinks.setAll('body.velocity.x', -20);
 
             this.physics.arcade.enable(this.pacman);
             this.pacman.body.setSize(16, 16, 0, 0);
