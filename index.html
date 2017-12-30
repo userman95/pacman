@@ -298,9 +298,9 @@
 		this.body.velocity.x = this.xSpeed;
 	};
 	    
-	function moveEnemy(enemy,platform){
-		if(enemy.xSpeed>0 && enemy.x>platform.x+platform.width/2 || enemy.xSpeed<0 && enemy.x<platform.x-platform.width/2){
-			enemy.xSpeed*=-1;
+	function moveEnemy(pink,platform){
+		if(pink.xSpeed>0 && pink.x>platform.x+platform.width/2 || pink.xSpeed<0 && pink.x<platform.x-platform.width/2){
+			pink.xSpeed*=-1;
 		}
 	}
 
