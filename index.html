@@ -106,7 +106,7 @@
             this.pacman.animations.add('munchUp', [6,7,8,9,10,11], 10, true);
             this.pacman.animations.add('munchDown', [0,1,2,3,4,5], 10, true);
             // pink Phantom               	 	
-	    pink = add.sprite(200,250,'pink');
+	    pink = this.add.sprite(200,250,'pink');
 	    pink.ancor.set(0.5);
 	    pink.callAll('animations.add', 'animations', 'walk', [ 0, 1,2,3 ],
 					4, true);
@@ -262,7 +262,7 @@
         update: function () {
           
             this.physics.arcade.collide(this.pacman, this.layer);
-	   // this.physics.arcade.collide(pink, this.layer);
+	    this.physics.arcade.collide(pink, this.layer);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
 
             this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
