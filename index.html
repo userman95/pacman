@@ -272,11 +272,7 @@
             this.directions[3] = this.map.getTileAbove(this.layer.index, this.marker.x, this.marker.y);
             this.directions[4] = this.map.getTileBelow(this.layer.index, this.marker.x, this.marker.y);
 
-            this.checkKeys();
-		
-	    pink.body.bounce.x = 1;
-	    pink.body.enable = true;		
-	    pink.body.velocity.x = -20;
+            this.checkKeys();			  
 		
             if (this.turning !== Phaser.NONE)
             {
