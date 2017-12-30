@@ -67,7 +67,7 @@
 
             this.load.image('dot', 'assets/dot.png');
             this.load.image('tiles', 'assets/TILES.png');
-            this.load.spritesheet('pink','assets/pink.png');
+            this.load.spritesheet('pink','assets/pink1.png');
             this.load.spritesheet('red','assets/red.png');
             this.load.spritesheet('blue','assets/blue.png');
             this.load.spritesheet('orange','assets/orange.png');
@@ -282,8 +282,8 @@
     };
 	Enemy = function (game, x, y, direction, speed) {
 	Phaser.Sprite.call(this, game, x, y, "pink");
-	this.pink.animations.add('walk', [ 0, 1 ,2,3],5, true);
-	this.pink.play('walk');	
+	//this.pink.animations.add('walk', [ 0, 1 ,2,3],5, true);
+	//this.pink.play('walk');	
 	this.anchor.setTo(0.5);
 	    
 	game.physics.enable(this, Phaser.Physics.ARCADE);
