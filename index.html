@@ -108,11 +108,12 @@
             // pink Phantom               	 	
 	    pink = this.add.sprite(200,250,'pink');
 	   // this.pink.ancor.set(0.5);
-	    pink.callAll('animations.add', 'animations', 'walk', [ 0, 1,2,3 ],
+	    this.pink.callAll('animations.add', 'animations', 'walk', [ 0, 1,2,3 ],
 					4, true);
-	    pink.callAll('animations.play', 'animations', 'walk');
-	    pink.setAll('body.bounce.x', 1);
-	    pink.setAll('body.velocity.x', -20);		
+	    this.pink.callAll('animations.play', 'animations', 'walk');
+	    this.pink.setAll('body.bounce.x', 1);
+	    this.pink.setAll('body.velocity.x', -20);
+		
             this.physics.arcade.enable(this.pacman);
             this.pacman.body.setSize(16, 16, 0, 0);
 
