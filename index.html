@@ -104,9 +104,12 @@
             this.pacman.animations.add('munchUp', [6,7,8,9,10,11], 10, true);
             this.pacman.animations.add('munchDown', [0,1,2,3,4,5], 10, true);
             // pink Phantom
-	    this.pink = this.add.sprite(14,15,'pink');
-      	   // this.pink.animations.add('walk', [ 0, 1 ,2,3],5, true);
-
+	    this.pink = this.add.sprite(224,296,'pink');
+      	    this.pink.animations.add('walk', [ 0, 1 ,2,3],5, true);
+	    this.physics.arcade.enable(this.pink);
+	    this.pink.body.setSize(16, 16, 0, 0);
+	    this.pink.play('walk');		
+		
             this.physics.arcade.enable(this.pacman);
             this.pacman.body.setSize(16, 16, 0, 0);
 
