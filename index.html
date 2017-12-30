@@ -107,7 +107,7 @@
             this.pacman.animations.add('munchDown', [0,1,2,3,4,5], 10, true);
             // pink Phantom               	 	
 	    pink = this.add.sprite(200,250,'pink');
-	    pink.ancor.set(0.5);
+	    this.pink.ancor.set(0.5);
 	    pink.callAll('animations.add', 'animations', 'walk', [ 0, 1,2,3 ],
 					4, true);
 	    pink.callAll('animations.play', 'animations', 'walk');
