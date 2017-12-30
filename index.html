@@ -109,8 +109,8 @@
 	    pink = this.add.sprite(200,250,'pink');
 	   // this.pink.ancor.set(0.5);
 	    pink.animations.add('walk', [ 0, 1, 2, 3 ],4, true);	    
-	    pink.setAll('body.bounce.x', 1);
-	    pink.setAll('body.velocity.x', -20);
+	    pink.body.bounce.x = 1;
+	    pink.body.velocity.x = -20;
 		
             this.physics.arcade.enable(this.pacman);
             this.pacman.body.setSize(16, 16, 0, 0);
