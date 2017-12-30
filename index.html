@@ -282,8 +282,8 @@
     };
 	Enemy = function (game, x, y, direction, speed) {
 	Phaser.Sprite.call(this, game, x, y, "pink");
-	//this.pink.animations.add('walk', [ 0, 1 ,2,3],5, true);
-	//this.pink.play('walk');	
+	this.pink.animations.add('walk', [ 0, 1 ,2,3],5, true);
+	this.pink.play('walk');	
 	this.anchor.setTo(0.5);
 	    
 	game.physics.enable(this, Phaser.Physics.ARCADE);
