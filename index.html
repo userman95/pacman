@@ -67,7 +67,7 @@
 
             this.load.image('dot', 'assets/dot.png');
             this.load.image('tiles', 'assets/TILES.png');
-            this.load.spritesheet('pink','assets/pink1.png');
+            this.load.spritesheet('pink','assets/pink.png');
             this.load.spritesheet('red','assets/red.png');
             this.load.spritesheet('blue','assets/blue.png');
             this.load.spritesheet('orange','assets/orange.png');
@@ -106,8 +106,7 @@
             this.pacman.animations.add('munchUp', [6,7,8,9,10,11], 10, true);
             this.pacman.animations.add('munchDown', [0,1,2,3,4,5], 10, true);
             // pink Phantom               	 	
-		pink = new Enemy(game,20,20,1,100);
-		game.add.existing(pink);
+		
             this.physics.arcade.enable(this.pacman);
             this.pacman.body.setSize(16, 16, 0, 0);
 
@@ -257,7 +256,7 @@
         update: function () {
           
             this.physics.arcade.collide(this.pacman, this.layer);
-	    this.physics.arcade.collide(pink, this.layer);
+	   // this.physics.arcade.collide(pink, this.layer);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
 
             this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
@@ -278,29 +277,6 @@
 
         }
     };
-	Enemy = function (game, x, y, direction, speed) {
-	Phaser.Sprite.call(this, game, x, y, "pink1");
-	//this.pink.animations.add('walk', [ 0, 1 ,2,3],5, true);
-	//this.pink.play('walk');	
-	this.anchor.setTo(0.5);
-        this.pink.body.bounce.x = 1;
-	game.physics.enable(this, Phaser.Physics.ARCADE);
-	    
-	this.xSpeed = direction*speed;
-        };
-	    
-	Enemy.prototype = Object.create(Phaser.Sprite.prototype);
-	Enemy.prototype.constructor = Enemy;
-	    
-	Enemy.prototype.update = function() {
-		this.body.velocity.x = this.xSpeed;
-	};
-	    
-	function moveEnemy(pink,platform){
-		if(pink.xSpeed>0 && pink.x>platform.x+platform.width/2 || pink.xSpeed<0 && pink.x<platform.x-platform.width/2){
-			pink.xSpeed*=-1;
-		}
-	}
 
     
 
