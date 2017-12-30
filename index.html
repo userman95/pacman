@@ -84,8 +84,7 @@
             this.map.addTilesetImage('TILES', 'tiles');
 
             this.layer = this.map.createLayer('Pacman');
-            this.stuff = this.map.createLayer('stuff');
-
+		
             this.dots = this.add.physicsGroup();
 
             this.map.createFromTiles(7, this.safetile, 'dot', this.layer, this.dots);
@@ -105,14 +104,7 @@
             this.pacman.animations.add('munchUp', [6,7,8,9,10,11], 10, true);
             this.pacman.animations.add('munchDown', [0,1,2,3,4,5], 10, true);
             // pink Phantom
-            this.pink = game.add.group();
-            this.pink.enableBody = true;
-	    this.map.createFromTiles(1, null, 'pink', 'stuff', this.pinks);
-	    //this.pinks.callAll('animations.add', 'animations', 'walk', [ 0, 1 ,2,3],4, true);
-	    this.pink.animations.add('walk', [ 0, 1 ,2,3],5, true);
-	    this.pink.play('walk');
-	    this.pink.setAll('body.velocity.x', -20);
-	    this.physics.arcade.enable(this.pink)
+      	   // this.pink.animations.add('walk', [ 0, 1 ,2,3],5, true);
 
             this.physics.arcade.enable(this.pacman);
             this.pacman.body.setSize(16, 16, 0, 0);
@@ -263,7 +255,6 @@
         update: function () {
           
             this.physics.arcade.collide(this.pacman, this.layer);
-            game.physics.arcade.overlap(this.pacman, this.pink, this.pinkOverlap);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
 
             this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
@@ -282,23 +273,6 @@
                 this.turn();
             }
 
-        },
-        pinkOverlap: function(pacman,pink){
-            if (this.pacman.body.touching.down||this.pacman.body.touching.up||this.pacman.body.touching.right||this.pacman.body.touching.left) {
-				this.pink.animations.stop();
-				this.pink.frame = 2;
-				this.pink.body.enable = false;
-				this.pacman.body.velocity.y = -80;				
-				//this.pink.kill();		
-                game.paused = true;
-			} /*else {
-				player.frame = 6;
-				player.body.enable = false;
-				player.animations.stop();
-				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-					game.paused = true;
-				});
-			}*/
         }
 
     };
