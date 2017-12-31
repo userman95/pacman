@@ -324,11 +324,13 @@
                 {
                     lives = lives - 1;
                     scoreCounter = 0;
+		    pinkSpeed = 100;
                     alert("Caution, you have lost 1 live!");
                     game.state.restart();                  
 		}
 		else{
 			death.play();
+			pinkSpeed = 100;
 			alert("You lost !");
 			alert("Your score is "+scoreCounter);
 			game.paused=true;
