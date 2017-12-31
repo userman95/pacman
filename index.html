@@ -300,6 +300,7 @@
         },
 
         update: function () {
+		//Teleport sthn antitheti meria tou map
 		if (this.pacman.x < 0)
 		    {
 			this.pacman.x = game.width;
@@ -343,7 +344,6 @@
         	}       	
         	if(this.physics.arcade.collide(this.pink, this.layer))
         	{
-			//game.time.events.add(Phaser.Timer.SECOND * 2, function(){this.pink.angle=this.pink.angle+90;}, this); 		      
         	      randomVar = Math.floor((Math.random() * 2) + 1);
         		if(randomVar == 1)
         		{
@@ -354,8 +354,9 @@
 				this.pink.angle = this.pink.angle - 90;
         		}										
         	}
-		if(this.physics.arcade.collide(this.pink, this.banana)){
+		if(this.physics.arcade.collide(this.pacman, this.banana)){
 			pink.kill();
+			banana.kill();
 		}
 		
             this.physics.arcade.collide(this.pacman, this.layer);
