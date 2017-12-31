@@ -73,9 +73,8 @@
             this.load.image('tiles', 'assets/TILES.png');
             this.load.spritesheet('pink','assets/pink.png',16,16);
             this.load.spritesheet('red','assets/red.png');
-            this.load.spritesheet('blue','assets/blue.png');
-            this.load.spritesheet('pear','assets/pear.png',16,16);
-	    this.load.image('banana','assets/banana.png');
+            this.load.image('orange','assets/orange1.png',16,16);
+            this.load.image('pear','assets/pear.png',16,16);
             this.load.spritesheet('deadPhantom','assets/deadPhantom.png');
 	    this.load.audio('intro', 'assets/pacman_ringtone.mp3');
             this.load.audio('chomp', 'assets/pacman_chomp.wav');
@@ -127,9 +126,13 @@
 	    this.physics.arcade.enable(this.pink);
             this.pink.body.setSize(16, 16, 0, 0);
 	    // Pear
-	    this.pear = this.add.sprite(game.world.width/2,game.world.height/2-5,'pear',0);
+	    this.pear = this.add.sprite(20,30,'pear',0);
 	    this.physics.arcade.enable(this.pear); 
-	    this.banana.body.setSize(16, 16, 0, 0);
+	    this.pear.body.setSize(16, 16, 0, 0);
+	    // Orange
+	    this.orange = this.add.sprite(game.world.width/2,game.world.height/2-5,'orange',0);
+	    this.physics.arcade.enable(this.orange); 
+	    this.orange.body.setSize(16, 16, 0, 0);
 		
             setTimeout(function()
                     {
@@ -357,6 +360,10 @@
 		if(this.physics.arcade.collide(this.pacman, this.pear)){
 			this.pink.kill();
 			this.pear.kill();
+		}
+		if(this.physics.arcade.collide(this.pacman, this.orange)){
+			this.pink.kill();
+			this.orange.kill();
 		}
 		
             this.physics.arcade.collide(this.pacman, this.layer);
