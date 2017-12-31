@@ -21,8 +21,7 @@
     var scoreStyle = {font : "bold 10pt Arial",fill: "#FFFFFF", boundsAlignH: "center", boundsAlignV: "middle"};
     var livesStyle = {font : "bold 10pt Arial",fill :"#FFFFFF" , boundsAlignH: "center", boundsAlignV: "middle"};
     var pinkSpeed = 100;
-    intro = game.add.audio('intro');
-		intro.play();
+
     var game = new Phaser.Game(448, 496, Phaser.AUTO);   	       			    
 	
     var Pacman = function (game) {
@@ -84,7 +83,8 @@
 	    
 	    this.load.spritesheet('pacman', 'assets/Child1.png',16, 32);
             this.load.tilemap('map', 'assets/finalmap.json', null, Phaser.Tilemap.TILED_JSON);
-
+		    intro = game.add.audio('intro');
+		intro.play();
             //  Needless to say, graphics (C)opyright Namco
 
         },
