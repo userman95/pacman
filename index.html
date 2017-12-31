@@ -75,6 +75,7 @@
             this.load.spritesheet('red','assets/red.png');
             this.load.spritesheet('blue','assets/blue.png');
             this.load.spritesheet('orange','assets/orange.png');
+	    this.load.image('banana','assets/banana.png');
             this.load.spritesheet('deadPhantom','assets/deadPhantom.png');
 	    this.load.audio('intro', 'assets/pacman_ringtone.mp3');
             this.load.audio('chomp', 'assets/pacman_chomp.wav');
@@ -125,6 +126,11 @@
             this.pink.animations.add('walk', [0, 1, 2, 3], 4, true);
 	    this.physics.arcade.enable(this.pink);
             this.pink.body.setSize(16, 16, 0, 0);
+	    // Banana
+	    this.banana = this.add.sprite(game.world.width/2,game.world.height/2,'banana',0);
+	    this.ancor.set(0.5);
+	    this.physics.arcade.enable(this.banana); 
+	    this.banana.body.setSize(16, 16, 0, 0);
 		
             setTimeout(function()
                     {
@@ -349,8 +355,12 @@
 				this.pink.angle = this.pink.angle - 90;
         		}										
         	}
+		if(this.physics.arcade.collide(this.pink, this.banana)){
+			pink.kill();
+		}
 		
             this.physics.arcade.collide(this.pacman, this.layer);
+		
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
 
             this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
