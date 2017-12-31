@@ -299,6 +299,11 @@
             	    this.pink.position.x = (14 * 16) + 8;
                     this.pink.position.y = (23 * 16) + 8;*/
 		}
+		else{
+			alert("You lost !");
+			alert("Your score is "+scoreCounter);
+			game.paused=true;
+		}
 	}
 		this.pink.scale.x = 1;
         	if(this.pink.angle == 0)
