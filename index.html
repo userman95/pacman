@@ -319,7 +319,23 @@
         	}       	
         	if(this.physics.arcade.collide(this.pink, this.layer))
         	{
-        	   this.pink.angle = -180;
+        	   randomVar = Math.floor((Math.random() * 4) + 1);
+        		if(randomVar == 1)
+        		{
+        			this.enemy.angle = this.enemy.angle + 90;
+        		}
+        		if(randomVar == 2)
+        		{
+        			this.enemy.angle = this.enemy.angle - 90;
+        		}
+			if(randomVar == 3)
+        		{
+        			this.enemy.angle = this.enemy.angle ;
+        		}
+			if(randomVar == 4)
+        		{
+        			this.enemy.angle = this.enemy.angle - 180;
+        		}
 				
         	}
             this.physics.arcade.collide(this.pacman, this.layer);
