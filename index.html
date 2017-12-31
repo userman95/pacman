@@ -319,15 +319,22 @@
         	}       	
         	if(this.physics.arcade.collide(this.pink, this.layer))
         	{
-        		randomVar = Math.floor((Math.random() * 2) + 1);
-        		if(randomVar == 1)
-        		{
-        			this.pink.angle =  90;
-        		}
-        		else 
-        		{
-        			this.pink.angle = -90;
-        		}   
+        		setTimeout(function()
+                    {
+                        this.pink.angle = 90;
+                    }, 30000);
+        		setTimeout(function()
+                    {
+                        this.pink.angle = -90;
+                    }, 30000);
+        		setTimeout(function()
+                    {
+                        this.pink.angle = -180;
+                    }, 30000);  
+			setTimeout(function()
+                    {
+                        this.pink.angle = 0;
+                    }, 30000);  
 	
         	}
             this.physics.arcade.collide(this.pacman, this.layer);
