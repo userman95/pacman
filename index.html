@@ -269,7 +269,7 @@
         eatDot: function (pacman, dot) {
 
             dot.kill();
-		chomp.play();
+		this.chomp.play();
 		scoreCounter += 10;
 		textScore.text = "SCORE : " + scoreCounter ;
             if (this.dots.total === 0)
