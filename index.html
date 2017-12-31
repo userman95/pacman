@@ -319,21 +319,16 @@
         	}       	
         	if(this.physics.arcade.collide(this.pink, this.layer))
         	{
-        		randomVar = Math.floor((Math.random() * 4) + 1);
+        		randomVar = Math.floor((Math.random() * 2) + 1);
         		if(randomVar == 1)
         		{
-        			this.pink.angle = this.pink.angle + 90;
+        			this.pink.angle =  90;
         		}
-        		else if(randomVar == 2)
+        		else 
         		{
-        			this.pink.angle = this.pink.angle - 90;
+        			this.pink.angle = -90;
         		}   
-			else if(randomVar == 3){
-				this.pink.angle = this.pink.angle - 180;
-			}
-			else if(randomVar == 4){
-				this.pink.angle = this.pink.angle - 0;
-			}
+	
         	}
             this.physics.arcade.collide(this.pacman, this.layer);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
