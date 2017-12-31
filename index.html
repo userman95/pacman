@@ -21,7 +21,8 @@
     var scoreStyle = {font : "bold 10pt Arial",fill: "#FFFFFF", boundsAlignH: "center", boundsAlignV: "middle"};
     var livesStyle = {font : "bold 10pt Arial",fill :"#FFFFFF" , boundsAlignH: "center", boundsAlignV: "middle"};
     var pinkSpeed = 100;
-    
+    intro = game.add.audio('intro');
+		intro.play();
     var game = new Phaser.Game(448, 496, Phaser.AUTO);   	       			    
 	
     var Pacman = function (game) {
@@ -94,10 +95,8 @@
             this.map.addTilesetImage('TILES', 'tiles');
 	    chomp = game.add.audio('chomp');
 	    extrapac = game.add.audio('extrapac');
-	    death = game.add.audio('death');
-	    intro = game.add.audio('intro');
-	    
-	    intro.play();
+	    death = game.add.audio('death');	    
+	    	    
             this.layer = this.map.createLayer('Pacman');
 		
             this.dots = this.add.physicsGroup();
