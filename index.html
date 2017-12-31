@@ -319,7 +319,7 @@
         	}       	
         	if(this.physics.arcade.collide(this.pink, this.layer))
         	{
-        	  setInterval(function(){ this.pink.angle = -180; }, 5000);
+        	   this.pink.angle = -180;
 				
         	}
             this.physics.arcade.collide(this.pacman, this.layer);
