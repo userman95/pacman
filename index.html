@@ -319,22 +319,10 @@
         	}       	
         	if(this.physics.arcade.collide(this.pink, this.layer))
         	{
-        		setTimeout(function()
-                    {
-                        this.pink.angle = 90;
-                    }, 30000);
-        		setTimeout(function()
-                    {
-                        this.pink.angle = -90;
-                    }, 30000);
-        		setTimeout(function()
-                    {
-                        this.pink.angle = -180;
-                    }, 30000);  
-			setTimeout(function()
-                    {
-                        this.pink.angle = 0;
-                    }, 30000);  
+        	   game.time.events.add(Phaser.Timer.SECOND*1,this.pink.angle = 90);
+            	   game.time.events.add(Phaser.Timer.SECOND*2,this.pink.angle = -90);
+                   game.time.events.add(Phaser.Timer.SECOND*3,this.pink.angle = -180);
+		   game.time.events.add(Phaser.Timer.SECOND*2,this.pink.angle = 0);
 	
         	}
             this.physics.arcade.collide(this.pacman, this.layer);
