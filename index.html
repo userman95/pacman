@@ -290,14 +290,9 @@
             if(lives != 0)
                 {
                     lives = lives - 1;
-                    score = 0;
+                    scoreCounter = 0;
                     alert("Caution, you have lost 1 live!");
-                    game.state.restart();
-                   /* this.pink.position.x = (14 * 16) + 8;
-                    this.pink.position.y = (17 * 16) + 8;
-            	    this.move(Phaser.LEFT);
-            	    this.pink.position.x = (14 * 16) + 8;
-                    this.pink.position.y = (23 * 16) + 8;*/
+                    game.state.restart();                  
 		}
 		else{
 			alert("You lost !");
@@ -324,15 +319,21 @@
         	}       	
         	if(this.physics.arcade.collide(this.pink, this.layer))
         	{
-        		randomVar = Math.floor((Math.random() * 2) + 1);
+        		randomVar = Math.floor((Math.random() * 4) + 1);
         		if(randomVar == 1)
         		{
         			this.pink.angle = this.pink.angle + 90;
         		}
-        		else
+        		else if(randomVar == 2)
         		{
         			this.pink.angle = this.pink.angle - 90;
-        		}        		
+        		}   
+			else if(randomVar == 3){
+				this.pink.angle = this.pink.angle - 180;
+			}
+			else if(randomVar == 4){
+				this.pink.angle = this.pink.angle - 0;
+			}
         	}
             this.physics.arcade.collide(this.pacman, this.layer);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
