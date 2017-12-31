@@ -295,13 +295,13 @@
         },
 
         update: function () {
-		if (pacman.x < 0)
+		if (this.pacman.x < 0)
 		    {
-			pacman.x = game.width;
+			this.pacman.x = game.width;
 		    }
-		    else if (pacman.x > game.width)
+		    else if (this.pacman.x > game.width)
 		    {
-			pacman.x = 0;
+			this.pacman.x = 0;
 		    }
           if (this.physics.arcade.collide(this.pacman, this.pink))
         {
