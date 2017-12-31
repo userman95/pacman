@@ -319,7 +319,8 @@
         	}       	
         	if(this.physics.arcade.collide(this.pink, this.layer))
         	{
-        	   randomVar = Math.floor((Math.random() * 4) + 1);
+			setInterval(function(){ this.pink.angle=90; }, 3000);
+        	  /* randomVar = Math.floor((Math.random() * 4) + 1);
         		if(randomVar == 1)
         		{
         			this.pink.angle = this.pink.angle + 90;
@@ -335,7 +336,7 @@
 			if(randomVar == 4)
         		{
         			this.pink.angle = this.pink.angle +0;
-        		}
+        		}*/
 			
 				
         	}
