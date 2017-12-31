@@ -368,8 +368,8 @@
 			this.pear.kill();
 		}
 		if(this.physics.arcade.collide(this.pacman, this.orange)){
-			this.pink.kill();
 			this.orange.kill();
+			pinkSpeed = 150;
 		}
 		
             this.physics.arcade.collide(this.pacman, this.layer);
