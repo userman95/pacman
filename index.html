@@ -114,7 +114,7 @@
             // pink Phantom               	 		    
 	    this.pink = this.add.sprite((14 * 16) + 8, (23 * 16) + 8, 'pink', 0);
             this.pink.anchor.set(0.5);
-            this.pink.animations.add('walk', [0, 1, 2, 3], 20, true);
+            this.pink.animations.add('walk', [0, 1, 2, 3], 4, true);
 	    this.physics.arcade.enable(this.pink);
             this.pink.body.setSize(16, 16, 0, 0);
 		
@@ -271,7 +271,12 @@
 		    lives = 0;
 		    scoreCounter = 0;
                     this.dots.callAll('revive');
-		    this.game.time.events.add(Phaser.Timer.SECOND , function() {this.game.state.restart(); });	
+		    this.pacman.position.x = (14 * 16) + 8;
+                    this.pacman.position.y = (17 * 16) + 8;
+            	    this.move(Phaser.LEFT);
+            	    this.pink.position.x = (14 * 16) + 8;
+                    this.pink.position.y = (23 * 16) + 8;
+		   // this.game.time.events.add(Phaser.Timer.SECOND , function() {this.game.state.restart(); });	
 	    }
 	      if(scoreCounter % 500 === 0){
 	     	lives ++;
@@ -281,24 +286,20 @@
 
         update: function () {
           if (this.physics.arcade.collide(this.pacman, this.pink))
-        	{
-        		if(lives > 1)
+        {
+            if(lives > 1)
                 {
                     lives = lives - 1;
-                    scoreCounter = 0;
+                    score = 0;
                     alert("Caution, you have lost 1 live!");
-            
-                    this.pacman.position.x = (14 * 16) + 8;
-                    this.pacman.position.y = (17 * 16) + 8;
+                
+                    this.pink.position.x = (14 * 16) + 8;
+                    this.pink.position.y = (17 * 16) + 8;
             	    this.move(Phaser.LEFT);
             	    this.pink.position.x = (14 * 16) + 8;
                     this.pink.position.y = (23 * 16) + 8;
 		}
-		else{
-			
-		}
-		}
-		
+	}
 		this.pink.scale.x = 1;
         	if(this.pink.angle == 0)
         	{
