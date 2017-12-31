@@ -95,7 +95,8 @@
 
             this.map = this.add.tilemap('map');
             this.map.addTilesetImage('TILES', 'tiles');
-
+	    chomp = game.add.audio('chomp');
+		
             this.layer = this.map.createLayer('Pacman');
 		
             this.dots = this.add.physicsGroup();
@@ -269,7 +270,7 @@
         eatDot: function (pacman, dot) {
 
             dot.kill();
-		Sound.autoplay(game,'chomp',1,0);
+		chomp.play();
 		scoreCounter += 10;
 		textScore.text = "SCORE : " + scoreCounter ;
             if (this.dots.total === 0)
