@@ -20,6 +20,7 @@
     var lives = 0;	    
     var scoreStyle = {font : "bold 10pt Arial",fill: "#FFFFFF", boundsAlignH: "center", boundsAlignV: "middle"};
     var livesStyle = {font : "bold 10pt Arial",fill :"#FFFFFF" , boundsAlignH: "center", boundsAlignV: "middle"};
+    var pinkSpeed = 100;
     
     var game = new Phaser.Game(448, 496, Phaser.AUTO);   	       			    
 	
@@ -28,6 +29,7 @@
         this.map = null;
         this.layer = null;
         this.pacman = null;
+	this.pink = null;
 	    
         this.safetile = 14;
         this.gridsize = 16;
@@ -107,17 +109,23 @@
             this.pacman.animations.add('munchRight', [12,13,14,15,16,17], 10, true);
             this.pacman.animations.add('munchUp', [6,7,8,9,10,11], 10, true);
             this.pacman.animations.add('munchDown', [0,1,2,3,4,5], 10, true);
-            // pink Phantom               	 	
-	    //pink = add.sprite(200,250,'pink');
-	   // this.pink.ancor.set(0.5);	   
-	   // pink.animations.add('walk', [ 0, 1, 2, 3 ],4, true);	    
-	 
-		
-            this.physics.arcade.enable(this.pacman);
+	    this.physics.arcade.enable(this.pacman);
             this.pacman.body.setSize(16, 16, 0, 0);
+            // pink Phantom               	 		    
+	    this.pink = this.add.sprite((14 * 16) + 8, (23 * 16) + 8, 'pink', 0);
+            this.pink.anchor.set(0.5);
+            this.pink.animations.add('walk', [0, 1, 2, 3], 20, true);
+	    this.physics.arcade.enable(this.pink);
+            this.pink.body.setSize(16, 16, 0, 0);
+		
+            setTimeout(function()
+                    {
+                        enemySpeed = 150;
+                    }, 20000);
 
             this.cursors = this.input.keyboard.createCursorKeys();
-
+		
+	    this.pink.play('walk');	
             this.pacman.play('munch');
             this.move(Phaser.LEFT);
 		
@@ -272,7 +280,54 @@
         },
 
         update: function () {
-          
+          if (this.physics.arcade.collide(this.pacman, this.pink))
+        	{
+        		if(lives > 1)
+                {
+                    lives = lives - 1;
+                    scoreCounter = 0;
+                    alert("Caution, you have lost 1 live!");
+            
+                    this.pacman.position.x = (14 * 16) + 8;
+                    this.pacman.position.y = (17 * 16) + 8;
+            	    this.move(Phaser.LEFT);
+            	    this.pink.position.x = (14 * 16) + 8;
+                    this.pink.position.y = (23 * 16) + 8;
+		}
+		else{
+			
+		}
+		}
+		
+		this.pink.scale.x = 1;
+        	if(this.pink.angle == 0)
+        	{
+        		this.pink.body.velocity.x = pinkSpeed;
+        	}
+        	if(this.pink.angle == -180)
+        	{
+        		this.pink.body.velocity.x = -pinkSpeed;
+        	}
+        	if(this.pink.angle == 90)
+        	{
+        		this.pink.body.velocity.y = pinkSpeed;
+        	}
+        	if(this.pink.angle == -90)
+        	{
+        		this.pink.body.velocity.y = -pinkSpeed;
+        	}       	
+        	if(this.physics.arcade.collide(this.pink, this.layer))
+        	{
+        		randomVar = Math.floor((Math.random() * 2) + 1);
+        		if(randomVar == 1)
+        		{
+        			this.pink.angle = this.pink.angle + 90;
+        		}
+        		else
+        		{
+        			this.pink.angle = this.pink.angle - 90;
+        		}        		
+        	}
             this.physics.arcade.collide(this.pacman, this.layer);
 	  //  this.physics.arcade.collide(pink, this.layer);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
