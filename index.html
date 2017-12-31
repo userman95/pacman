@@ -265,9 +265,9 @@
                     this.dots.callAll('revive');
 		    this.game.time.events.add(Phaser.Timer.SECOND , function() {this.game.state.restart(); });	
 	    }
-	     else if(scoreCounter === 500){
+	      if(scoreCounter === 500){
 	     	lives ++;
-		textLives.text = " x " + lives;
+		textLives.text = " Lives : " + lives;
 	     }	
         },
 
