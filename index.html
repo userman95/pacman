@@ -17,7 +17,7 @@
     <script type="text/javascript">
 
     var scoreCounter = 0;
-    var lives = 0;	    
+    var lives = 3;	    
     var scoreStyle = {font : "bold 10pt Arial",fill: "#FFFFFF", boundsAlignH: "center", boundsAlignV: "middle"};
     var livesStyle = {font : "bold 10pt Arial",fill :"#FFFFFF" , boundsAlignH: "center", boundsAlignV: "middle"};
     var pinkSpeed = 100;
@@ -276,7 +276,7 @@
             	    this.move(Phaser.LEFT);
             	    this.pink.position.x = (14 * 16) + 8;
                     this.pink.position.y = (23 * 16) + 8;
-		   // this.game.time.events.add(Phaser.Timer.SECOND , function() {this.game.state.restart(); });	
+		    this.game.time.events.add(Phaser.Timer.SECOND , function() {this.game.state.restart(); });	
 	    }
 	      if(scoreCounter % 500 === 0){
 	     	lives ++;
@@ -287,17 +287,17 @@
         update: function () {
           if (this.physics.arcade.collide(this.pacman, this.pink))
         {
-            if(lives > 1)
+            if(lives != 0)
                 {
                     lives = lives - 1;
                     score = 0;
                     alert("Caution, you have lost 1 live!");
-                
-                    this.pink.position.x = (14 * 16) + 8;
+                    game.state.restart();
+                   /* this.pink.position.x = (14 * 16) + 8;
                     this.pink.position.y = (17 * 16) + 8;
             	    this.move(Phaser.LEFT);
             	    this.pink.position.x = (14 * 16) + 8;
-                    this.pink.position.y = (23 * 16) + 8;
+                    this.pink.position.y = (23 * 16) + 8;*/
 		}
 	}
 		this.pink.scale.x = 1;
@@ -330,7 +330,6 @@
         		}        		
         	}
             this.physics.arcade.collide(this.pacman, this.layer);
-	  //  this.physics.arcade.collide(pink, this.layer);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
 
             this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
