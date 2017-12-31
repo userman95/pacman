@@ -14,9 +14,6 @@
 </head>
 <body>
 
-    <audio autoplay loop>
-     <source src="assets/pacman_ringtone.mp3" type="audio/mpeg">   
-    </audio> 
     <script type="text/javascript">	 
 
     var scoreCounter = 0;
@@ -96,7 +93,11 @@
             this.map = this.add.tilemap('map');
             this.map.addTilesetImage('TILES', 'tiles');
 	    chomp = game.add.audio('chomp');
-		
+	    extrapac = game.add.audio('extrapac');
+	    death = game.add.audio('death');
+	    intro = game.add.audio('intro');
+	    
+	    intro.play();
             this.layer = this.map.createLayer('Pacman');
 		
             this.dots = this.add.physicsGroup();
@@ -288,6 +289,7 @@
 		    this.game.time.events.add(Phaser.Timer.SECOND , function() {this.game.state.restart(); });	
 	    }
 	      if(scoreCounter % 500 === 0){
+		extrapac.play();
 	     	lives ++;
 		textLives.text = " Lives : " + lives;
 	     }	
@@ -304,6 +306,7 @@
                     game.state.restart();                  
 		}
 		else{
+			death.play();
 			alert("You lost !");
 			alert("Your score is "+scoreCounter);
 			game.paused=true;
