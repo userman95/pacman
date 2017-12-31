@@ -21,15 +21,8 @@
     var scoreStyle = {font : "bold 10pt Arial",fill: "#000", boundsAlignH: "center", boundsAlignV: "middle"};
     var livesStyle = {font : "bold 10pt Arial",fill :"#000" , boundsAlignH: "center", boundsAlignV: "middle"};
     
-    var game = new Phaser.Game(448, 496, Phaser.AUTO);
-   	    
-    function print_status_to_screen(){
-		textScore = game.add.text(10,10,"SCORE : " + scoreCounter, scoreStyle);
-		textScore.fixedToCamera=true;
-
-		textLives = game.add.text(23,27," x " + lives, livesStyle);
-		textLives.fixedToCamera = true;		
-	}
+    var game = new Phaser.Game(448, 496, Phaser.AUTO);   	       			    
+	
     var Pacman = function (game) {
 
         this.map = null;
@@ -128,6 +121,8 @@
             this.pacman.play('munch');
             this.move(Phaser.LEFT);
 		
+		textScore = game.add.text(10,10,"SCORE : " + scoreCounter, scoreStyle);
+		textLives = game.add.text(23,27," x " + lives, livesStyle);
 
         },
 
