@@ -319,16 +319,17 @@
         	}       	
         	if(this.physics.arcade.collide(this.pink, this.layer))
         	{
-			
-        	   randomVar = Math.floor((Math.random() * 2) + 1);
+			game.time.events.add(Phaser.Timer.SECOND * 2, function(){this.pink.angle=this.pink.angle+90;}, this); 
+			game.time.events.add(Phaser.Timer.SECOND * 2, function(){this.pink.angle=this.pink.angle-90;}, this);        			
+        	  /* randomVar = Math.floor((Math.random() * 2) + 1);
         		if(randomVar == 1)
         		{
-				game.time.events.add(Phaser.Timer.SECOND * 2, function(){this.pink.angle=this.pink.angle+90;}, this);        			
+				
         		}
         		if(randomVar == 2)
         		{
-				game.time.events.add(Phaser.Timer.SECOND * 2, function(){this.pink.angle=this.pink.angle-90;}, this);        			
-        		}						
+				
+        		}	*/					
 				
         	}
             this.physics.arcade.collide(this.pacman, this.layer);
