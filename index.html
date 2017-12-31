@@ -32,7 +32,7 @@
         this.safetile = 14;
         this.gridsize = 16;
 
-        this.speed = 150;
+        this.speed = 100;
         this.threshold = 3;
 
         this.marker = new Phaser.Point();
@@ -259,7 +259,7 @@
             if (this.dots.total === 0)
             {
 		    alert("You win !");
-		    alert("Total score " + scoreCounter + "Lives "+ lives);
+		    alert("Total score " + scoreCounter + "  Lives "+ lives);
 		    lives = 0;
 		    scoreCounter = 0;
                     this.dots.callAll('revive');
