@@ -319,19 +319,19 @@
         	}       	
         	if(this.physics.arcade.collide(this.pink, this.layer))
         	{
-			game.time.events.add(Phaser.Timer.SECOND * 2, function(){this.pink.angle=this.pink.angle+90;}, this); 
-			//game.time.events.loop(Phaser.Timer.SECOND * 4, function(){this.pink.angle=this.pink.angle-90;}, this);        			
-        	  /* randomVar = Math.floor((Math.random() * 2) + 1);
+		      //game.time.events.add(Phaser.Timer.SECOND * 2, function(){}, this); 
+        	      randomVar = Math.floor((Math.random() * 2) + 1);
         		if(randomVar == 1)
         		{
-				
+				this.pink.angle=this.pink.angle+90;	
         		}
         		if(randomVar == 2)
         		{
-				
-        		}	*/					
+				this.pink.angle=this.pink.angle-90;
+        		}						
 				
         	}
+		game.time.events.add(Phaser.Timer.SECOND * 2, function(){this.pink.angle=this.pink.angle+90;}, this); 
             this.physics.arcade.collide(this.pacman, this.layer);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
 
