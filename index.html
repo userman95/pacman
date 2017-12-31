@@ -319,10 +319,10 @@
         	}       	
         	if(this.physics.arcade.collide(this.pink, this.layer))
         	{
-        	  setTimeout(function(){ this.pink.angle = 90; }, 3000);
+        	  setTimeout(function(){ this.pink.angle = 90; }, 1000);
 		  setTimeout(function(){ this.pink.angle = -180; }, 3000);
-		  setTimeout(function(){ this.pink.angle = -90; }, 3000);
-	       	  setTimeout(function(){ this.pink.angle = 0; }, 3000);			
+		  setTimeout(function(){ this.pink.angle = -90; }, 5000);
+	       	  setTimeout(function(){ this.pink.angle = 0; }, 7000);			
         	}
             this.physics.arcade.collide(this.pacman, this.layer);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
