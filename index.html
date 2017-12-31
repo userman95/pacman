@@ -14,7 +14,10 @@
 </head>
 <body>
 
-    <script type="text/javascript">
+    <audio autoplay loop>
+     <source src="assets/pacman_ringtone.mp3" type="audio/mpeg">   
+    </audio> 
+    <script type="text/javascript">	 
 
     var scoreCounter = 0;
     var lives = 3;	    
@@ -76,8 +79,12 @@
             this.load.spritesheet('blue','assets/blue.png');
             this.load.spritesheet('orange','assets/orange.png');
             this.load.spritesheet('deadPhantom','assets/deadPhantom.png');
-            
-            this.load.spritesheet('pacman', 'assets/Child1.png',16, 32);
+	    this.load.audio('intro', 'assets/pacman_ringtone.mp3');
+            this.load.audio('chomp', 'assets/pacman_chomp.wav');
+            this.load.audio('death', 'assets/pacman_death.wav');		
+	    this.load.audio('extrapac', 'assets/pacman_extrapac.wav');
+	    
+	    this.load.spritesheet('pacman', 'assets/Child1.png',16, 32);
             this.load.tilemap('map', 'assets/finalmap.json', null, Phaser.Tilemap.TILED_JSON);
 
             //  Needless to say, graphics (C)opyright Namco
