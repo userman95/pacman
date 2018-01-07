@@ -21,8 +21,6 @@
     var scoreStyle = {font : "bold 10pt Arial",fill: "#FFFFFF", boundsAlignH: "center", boundsAlignV: "middle"};
     var livesStyle = {font : "bold 10pt Arial",fill :"#FFFFFF" , boundsAlignH: "center", boundsAlignV: "middle"};
     var pinkSpeed = 100;
-    var button;
-    var background;
 
     var game = new Phaser.Game(448, 496, Phaser.AUTO);   	       			    
 	
@@ -75,10 +73,7 @@
 
             this.load.image('dot', 'assets/dot.png');
             this.load.image('tiles', 'assets/TILES.png');
-	    this.load.image('background','assets/background.png');
-	    this.load.image('button','assets/button.png');
             this.load.spritesheet('pink','assets/pink.png',16,16);
-            this.load.spritesheet('red','assets/red.png');
             this.load.spritesheet('orange','assets/orange1.png',16,16);
             this.load.spritesheet('pear','assets/pear.png',16,16);
             this.load.spritesheet('deadPhantom','assets/deadPhantom.png');
@@ -96,9 +91,6 @@
         },
 
         create: function () {
-	 
-	    background = game.add.tileSprite(0, 0, 800, 600, 'background');
-	    button = game.add.button(game.world.centerX - 95, 400, 'button', actionOnClick, this);	
 		
             this.map = this.add.tilemap('map');
             this.map.addTilesetImage('TILES', 'tiles');
@@ -404,12 +396,6 @@
 
         }
     };
-             function actionOnClick () {
-
-     		background.visible =! background.visible;
-
-	    }
-    
 
     game.state.add('Game', Pacman, true);
 
