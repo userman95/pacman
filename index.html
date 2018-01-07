@@ -162,11 +162,7 @@
 	    textLives = game.add.text(23,27,"Lives : " + lives, livesStyle);
 
         },
-	    function actionOnClick () {
-
-     		background.visible =! background.visible;
-
-	    },
+	    
 
         checkKeys: function () {
 
@@ -408,7 +404,11 @@
 
         }
     };
+             function actionOnClick () {
 
+     		background.visible =! background.visible;
+
+	    }
     
 
     game.state.add('Game', Pacman, true);
